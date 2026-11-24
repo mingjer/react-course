@@ -5,14 +5,83 @@
   </head>
   <body>
     <div class="js-container"></div>
+    
+    <!-- React = external library that helps us create websites easier -->
+     <!-- Web = React + ReactDOM -->
+    <!-- App = React + ReactNative -->
 
+    <!-- React = shared features -->
     <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <!-- ReactDOM = features specific to websites  -->
     <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
 
+    <!-- 1g -->
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+    <!-- Babel = translate JSX to JavaScript -->
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
-    <script type="text/babel">
-      const container = document.querySelector('.js-container');
-      ReactDOM.createRoot(container).render('Welcome to SuperSimpleDev React Course');
+    <script type="text/babel">  // type = "text/babel" -> tells babel to translate JSX to JavaScript
+        // JSX = same as JavaScript, but we can write HTML directly in our JavaScript code.
+        const button = <button>Good Job!</button>; // excerise 1a
+        const paragraph = <p>My name is Tony</p>; // excerise 1b
+        const c1 = <p>Cotton socks<br/>Price: $10</p>; // excerise 1c
+        const c1Btn = <button>Add to cart</button>; // excerise 1c
+
+        const div = (
+          <div>
+            {c1}
+            {c1Btn}
+          </div>
+        );
+
+        let productCost = 0; // excerise 1d
+        productCost = 10 + 2 * 8; // excerise 1d
+        console.log(productCost); // excerise 1d
+        
+        let shippingCost = 5; // excerise 1f
+
+        
+        const today = dayjs().format('MMMM D'); // excerise 1g
+        let time = dayjs().format('HH:mm:ss'); // excerise 1i
+        console.log(today);// excerise 1g
+
+        // excerise 1h, 1i
+        const date = (
+          <p>
+            Today is {today}<br/>
+            Current time is {time}
+          </p>
+        ); 
+
+        // excerise 1e
+        const div2 = (
+          <div>
+            <p>
+              Product Cost: $ {productCost}<br/>
+              Shipping Cost: $ {shippingCost}<br/>
+              Total Cost: $ {productCost + shippingCost}<br/>
+              <button>Place your order</button>
+            </p>
+          </div>
+        );
+
+        const container = document.querySelector('.js-container');
+        // ReactDOM.createRoot(container).render(div); // excerise 1a
+        // ReactDOM.createRoot(container).render(div2); // excerise 1e
+        // ReactDOM.createRoot(container).render(date); // excerise 1h, 1i
+        
+        // excerise 1j
+        const root = ReactDOM.createRoot(container);
+
+        setInterval(() => {          
+          const date = (
+            <p>
+              Today is {today}<br/>
+              Current time is {dayjs().format('HH:mm:ss')}
+            </p>
+          );
+          root.render(date);
+        }, 1000);
     </script>
   </body>
 </html>
